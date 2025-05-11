@@ -1,1 +1,22 @@
-<!doctype html><meta charset=utf-8><script>const p=new URLSearchParams(window.location.search).get("phone");p&&(window.location.href=`viber://chat?number=%2B${p.replace(/\D/g,"")}`,setTimeout(()=>{window.location.href=`https://viber.com/contact?number=${p}`},500));</script>
+<!doctype html>
+<meta charset="utf-8">
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const phone = urlParams.get("phone");
+  const channel = urlParams.get("channel"); // sms, viber и т.д.
+
+  if (phone) {
+    const digits = phone.replace(/\D/g, "");
+
+    if (channel === "sms") {
+      // Формирует ссылку на отправку SMS
+      window.location.href = `sms:+${digits}`;
+    } else {
+      // Открывает Viber (основной сценарий)
+      window.location.href = `viber://chat?number=%2B${digits}`;
+      setTimeout(() => {
+        window.location.href = `https://viber.com/contact?number=${digits}`;
+      }, 500);
+    }
+  }
+</script>
