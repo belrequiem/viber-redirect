@@ -1,17 +1,5 @@
-<!doctype html>
-<script>
-let p = new URLSearchParams(location.search).get("phone")?.replace(/\D/g,""),
-    c = new URLSearchParams(location.search).get("channel");
-
-if (p) {
-    if (c === "sms") {
-        location.href = sms:+${p};
-    } else if (c === "call") {
-        location.href = tel:+${p};
-    } else {
-        // По умолчанию Viber
-        location.href = viber://chat?number=%2B${p};
-        setTimeout(() => location.href = https://viber.com/contact?number=${p}, 500);
-    }
-}
+<!doctype html><script>
+let p=new URLSearchParams(location.search).get("phone")?.replace(/\D/g,""),
+    c=new URLSearchParams(location.search).get("channel");
+if(p)location.href=c==="sms"?sms:+${p}:viber://chat?number=%2B${p},setTimeout(()=>location.href=`https://viber.com/contact?number=${p}`,500);
 </script>
